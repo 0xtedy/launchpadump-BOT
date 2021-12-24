@@ -85,7 +85,7 @@ symbol = getSymbol(tokenToDump)
 if amountToDump == "all":
     atd = 8000000000
 else:
-    atd = amountToDump
+    atd = int(amountToDump)
 
 if getAllowance(tokenToDump) < atd*10**decimals:
     approveToken(tokenToDump, 8000000000000000000000000000)
