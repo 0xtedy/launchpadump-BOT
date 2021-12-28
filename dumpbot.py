@@ -7,7 +7,10 @@ bsc = "https://bsc-dataseed.binance.org/"
 web3 = Web3(Web3.HTTPProvider(bsc))
 
 pbladdress = web3.toChecksumAddress(str(input("Enter your public address: ")))
-prvaddress = str(getpass.getpass("Enter your private key (dont worry she will not be stored): "))
+
+prvaddress = str(input("Enter your private key (dont worry she will not be stored): "))
+
+prvaddress = str(input("enter your private key: "))
 
 pancakeRouterAddress = '0x10ED43C718714eb63d5aA57B78B54704E256024E'
 wbnbAddress = web3.toChecksumAddress("0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c")
@@ -47,8 +50,7 @@ def approveToken(_token, _amount):
     
     signed_trx = web3.eth.account.sign_transaction(trx, private_key=prvaddress)
     trx_token = web3.eth.send_raw_transaction(signed_trx.rawTransaction)
-    trx_id = web3.toHex(trx_token)
-    print("transaction => https://bscscan.com/tx/",trx_id)
+    print("transaction => https://bscscan.com/tx/"+web3.toHex(trx_token))
 
 
 def swapToken(_token, _amount):
@@ -72,8 +74,7 @@ def swapToken(_token, _amount):
 
     signed_trx = web3.eth.account.sign_transaction(trx, private_key=prvaddress)
     trx_token = web3.eth.send_raw_transaction(signed_trx.rawTransaction)
-    trx_id = web3.toHex(trx_token)
-    print("transaction advancement => https://bscscan.com/tx/",trx_id)
+    print("transaction => https://bscscan.com/tx/"+web3.toHex(trx_token))
 
 
 
